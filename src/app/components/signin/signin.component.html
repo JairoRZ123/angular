@@ -1,0 +1,50 @@
+<br><br><br><br><br>
+
+<div class="row">
+    <div class="col s12 m3 l4"></div>
+
+    <div class="col s12 m6 l4 center">
+        <div class="card">
+            <div class="card-content">
+
+                <div class="row">
+                    <div class="col s12 center">
+                        <img width="120" src="../../../assets/images/user.png" class="responsive-img">
+                    </div>
+
+                    <form #signInForm="ngForm">
+                        
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">email</i>
+                            <input id="signin_email" type="text" maxlength="50" name="email" #email="ngModel"
+                            [(ngModel)]="authService.user.email">
+                            <label for="signin_email">Correo</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">lock</i>
+                            <input id="signin_password" type="password" maxlength="50" name="password" #password="ngModel"
+                            [(ngModel)]="authService.user.password">
+                            <label for="signin_password">Contrasena</label>
+                        </div>
+
+                        <div class="col s12">
+                            <a (click)= "signin(signInForm)" class="waves-effect waves-light btn-large blue darken-4 white-text" style="width: 100%;">
+                                <i class="material-icons right">send</i>INICIAR SESION</a>
+                        </div>
+
+                        <div class="col s12">
+                            <br>
+                            <b><a routerLink="/signup" routerLinkActivate="active">Registrarme</a></b>
+                        </div>
+
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col s12 m3 l4"></div>
+</div>

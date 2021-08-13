@@ -1,0 +1,132 @@
+    <div class="row">
+
+        <!--Formulario-->
+        <div class="col s12 m12 112 center">
+            <div class="card white">
+                <div class="card-content">
+                    <span class="car-title"><b>FORMULARIO</b></span>
+
+                    <!--(ngSubmit)="addUser(userForm)"-->
+
+                    <form #userForm="ngForm">
+                        <div class="row">
+
+                            <input type="hidden" name="_id" #_id="ngModel"[(ngModel)]="userService.selectedUser._id">
+
+                        <div class="input-field col s12">
+                            <input type="text" name="name" #name="ngModel"[(ngModel)]="userService.selectedUser.name" 
+                            placeholder="Ingrese nombre">
+                            <label for="name">Nombre completo</label>
+                        </div>
+    
+                        <div class="input-field col s12">
+                            <input type="text" name="email" #email="ngModel"[(ngModel)]="userService.selectedUser.email"
+                            placeholder="Ingrese correo">
+                            <label for="name">Correo Electron</label>
+                        </div>
+    
+                        <div class="input-field col s12">
+                            <input type="password" name="password" #password="ngModel"[(ngModel)]="userService.selectedUser.password" 
+                            placeholder="Ingrese contraseña">
+                            <label for="name">Contrasena</label>
+                        </div>
+    
+                        <div class="input-field col s12">
+                            <input type="number" name="type" #type="ngModel"[(ngModel)]="userService.selectedUser.type" 
+                            placeholder="Ingrese tipo de usuario">
+                            <label for="name">Tipo de usuario</label>
+                        </div>
+    
+                        <div class="input-field col s12">
+                            <input type="number" name="points" #points="ngModel"[(ngModel)]="userService.selectedUser.points" 
+                            placeholder="Ingrese puntos">
+                            <label for="name">Puntos</label>
+                        </div>
+
+                        <div class="card-action">
+                            <div class=" col s6">
+                                <button (click)="resetForm(userForm)" style="width: 100%;" class="btn right white-text red darken-3">Limpiar</button>
+                            </div>
+
+                            <div class=" col s6">
+                                <button (click)="addOrEditUser(userForm)" style="width: 100%;" class="btn right white-text blue darken-3">Guardar</button>
+                            </div>
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+                <!--tabla-->
+
+                <div class="col s12 m12 112 center">
+                    <div class="card white">
+        
+                        <div class="center black-text">
+                            <span>Lista de Usuarios</span>
+        
+                            <table>
+                                <thead>
+                                    <th>Nombre</th>
+                                    <th >Correo</th>
+                                    <th>Tipo de Usuario</th>
+                                    <th>Puntos</th>
+                                    <th>Operaciones</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let users of userService.users">
+                                        <td>{{users.name}}</td>
+                                        <td>{{users.email}}</td>
+                                        <td *ngIf="users.type == 1">{{'Admin'}}</td>
+                                        <td *ngIf="users.type == 2">{{'Tecnico'}}</td>
+                                        <td *ngIf="users.type == 3">{{'Operador'}}</td>
+                                        <td *ngIf="users.type == 4">{{'Cliente'}}</td>
+                                        <td *ngIf="users.type == 5">{{'Guardia'}}</td>
+                                        <td>{{users.points}}</td>
+                                        <td>
+                                            <a  style="margin-left: 10px; margin-right:10px;"(click)="loadData(users)">
+                                            <i class="material-icons amber-text">edit</i></a>
+                                            <a  style="margin-left: 10px; margin-right:10px;"(click)="deleteUser(users._id)">
+                                            <i class="material-icons red-text">delete</i></a>
+                                        </td>
+        
+                                    </tr>
+                                </tbody>
+                            </table>
+        
+                        </div>
+                    </div>
+                    
+                </div>
+
+        <!--Graficas-->
+
+        <div class="col s12 m6 13">
+
+            <div class="card white">
+
+                <div class="card-content">
+                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                </div>
+
+            </div>
+            
+        </div>
+
+        <!--Graficas-->
+
+        <div class="col s12 m6 13">
+
+            <div class="card white">
+        
+                <div class="card-content">
+                    <div id="chartContainer2" style="height: 370px; width: 100%;"></div>
+                </div>
+        
+            </div>
+                    
+        </div>
+
+
+    </div>
